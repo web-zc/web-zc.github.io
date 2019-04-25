@@ -344,15 +344,15 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 <p>一、this指向</p>
 <ol>
 <li><p><strong>普通函数调用</strong>  this是全局对象window   这个函数实质是window下的方法</p>
-<pre><code>```javascript
-</code></pre><p>var x = 520<br>function test(){</p>
-<pre><code>console.log(this.x) // 520
-</code></pre><p>}<br>test()</p>
-<pre><code>```
-</code></pre></li>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">520</span>
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 520</span>
+<span class="token punctuation">}</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
 <li><p><strong>函数作为对象的方法被调用</strong>  函数的this就是调用它的对象</p>
-<pre><code>```javascript
-</code></pre><p>function test(){</p>
+<p> <code>`</code>javascript<br>function test(){</p>
 <pre><code>        console.log(this.x)
     }
     var obj = {}
@@ -361,115 +361,108 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
     obj.m() // 1
 </code></pre></li>
 </ol>
-<pre><code>   ```
+<pre><code>```
 </code></pre><ol start="3">
 <li><p><strong>构造函数</strong>  构造函数中this是实例化的对象</p>
-<pre><code>```javascript
-</code></pre><p>function test(){</p>
-<pre><code>       this.x = 520
-   }
-   var obj = new test()
-   obj.x  //520
-```
-</code></pre></li>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">520</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+       obj<span class="token punctuation">.</span>x  <span class="token comment" spellcheck="true">//520</span>
+</code></pre>
+</li>
 <li><p><strong>箭头函数</strong> 箭头函数的this是，上一作用域的this   且无法通过call方法改变this指向</p>
-<pre><code>```javascript
-</code></pre><p>var arry = [1]</p>
-<pre><code>   let x = 520
-   function test(){
-      arry.forEach(itme =&gt; {
-          console.log(this.x) // 520
-      })
-   }
-   test()
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arry <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+       <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">520</span>
+       <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          arry<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>itme <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 520</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+       <span class="token punctuation">}</span>
+       <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-```
-</code></pre><p><strong>对象中箭头函数</strong> 对象中箭头函数的this指向window</p>
-<pre><code>```javascript
-</code></pre><p> var x = 520</p>
-<pre><code>  var obj = {
-      x:1314,
-      y: ()=&gt;{
-          console.log(this.x) // 520
-      },
-      z: {
-         x: 1314,
-         d: ()=&gt;{
-             console.log(this.x) // 520
-         }
-      }
-  }
-  obj.y() // 对象中箭头函数this是window
-  obj.z.d() // 多层对象嵌套中的箭头函数的this还是window
-```
-</code></pre></li>
+</code></pre>
+<p><strong>对象中箭头函数</strong> 对象中箭头函数的this指向window</p>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">520</span>
+      <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+          x<span class="token punctuation">:</span><span class="token number">1314</span><span class="token punctuation">,</span>
+          y<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 520</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          z<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+             x<span class="token punctuation">:</span> <span class="token number">1314</span><span class="token punctuation">,</span>
+             d<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 520</span>
+             <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      obj<span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 对象中箭头函数this是window</span>
+      obj<span class="token punctuation">.</span>z<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 多层对象嵌套中的箭头函数的this还是window</span>
+</code></pre>
+</li>
 </ol>
 <ol start="5">
 <li><p><strong>原型方法</strong> 原型方法中的this是实例对象</p>
-<pre><code>```javascript
-</code></pre><p>function Test(){</p>
-<pre><code>      this.x = 520
-   }
-   Test.prototype.test = function(){
-        console.log(this.x) //520
-   }
-   var foo = new Test()
-   foo.test()
-```
-</code></pre></li>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">520</span>
+       <span class="token punctuation">}</span>
+       Test<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>test <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//520</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+       foo<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
 <li><p><strong>匿名函数</strong> 匿名函数中的this是window   匿名函数会自执行</p>
-<pre><code>```javascript
-</code></pre><p> var x =520</p>
-<pre><code>   function Test(){
-      var x = 1314
-     return function (){
-          console.log(this.x)  // 520
-      }
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> x <span class="token operator">=</span><span class="token number">520</span>
+       <span class="token keyword">function</span> <span class="token function">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1314</span>
+         <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 520</span>
+          <span class="token punctuation">}</span>
 
-   }
-      var z = new Test()
-      z()
+       <span class="token punctuation">}</span>
+          <span class="token keyword">var</span> z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token function">z</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-```
-</code></pre><hr>
+</code></pre>
+<hr>
 </li>
 </ol>
 <p>二、改变this指向的方法</p>
 <ul>
 <li><p>call、apply、bind都属于Function.prototype的一个方法，所以每个function实例都有call、apply、bind属性</p>
-<pre><code>```javascript
-</code></pre><p> var obj = {</p>
-<pre><code>     b: function(x,y){
-         console.log(this)
-         console.log(x,y)
-     }
- }
- //以下所有调用都可以传递参数
- obj.b(2,4) //obj
- obj.b.call(window,2,4) // window call与apply 都会返回新函数
- obj.b.apply(window,[2,4]) // window
- obj.b.bind(window,2,4)() // window bind返回改变了上下文后的一个函数，要执行，还要调用
-```
-</code></pre></li>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+         b<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>
+         <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+     <span class="token comment" spellcheck="true">//以下所有调用都可以传递参数</span>
+     obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//obj</span>
+     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window call与apply 都会返回新函数</span>
+     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window</span>
+     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window bind返回改变了上下文后的一个函数，要执行，还要调用</span>
+</code></pre>
+</li>
 <li><p>用变量或对象下的方法接收，会改变this指向</p>
-<pre><code>```javascript
-</code></pre><p> var x = 1314</p>
-<pre><code>    var obj = {
-        x: 520,
-        b: function () {
-            console.log(this.x)
-        }
-    }
-    var c = {
-        x: 666
-    }
-    obj.b()  //520  
-    var q = obj.b  //用普通变量接收，this是window
-    q() // 1314
-    c.o = obj.b    //用对象下的一个方法接收this是该对象c
-    c.o() // 666
-```
-</code></pre></li>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1314</span>
+        <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+            x<span class="token punctuation">:</span> <span class="token number">520</span><span class="token punctuation">,</span>
+            b<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token punctuation">{</span>
+            x<span class="token punctuation">:</span> <span class="token number">666</span>
+        <span class="token punctuation">}</span>
+        obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//520  </span>
+        <span class="token keyword">var</span> q <span class="token operator">=</span> obj<span class="token punctuation">.</span>b  <span class="token comment" spellcheck="true">//用普通变量接收，this是window</span>
+        <span class="token function">q</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1314</span>
+        c<span class="token punctuation">.</span>o <span class="token operator">=</span> obj<span class="token punctuation">.</span>b    <span class="token comment" spellcheck="true">//用对象下的一个方法接收this是该对象c</span>
+        c<span class="token punctuation">.</span><span class="token function">o</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 666</span>
+</code></pre>
+</li>
 </ul>
 
             </div>
