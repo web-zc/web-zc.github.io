@@ -10,8 +10,7 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 第一次写博客，谈一下现在对this的理解。
 如果有不对的地方，欢迎大家指正。
 一、this指向
-
-普通函数调用 ">
+普通函数调用  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -341,8 +340,7 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 <p>this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪的案例，一战回到解放前。</p>
 <p>第一次写博客，谈一下现在对this的理解。</p>
 <p>如果有不对的地方，欢迎大家指正。</p>
-<p>一、this指向</p>
-<ol>
+<h3 id="一、this指向"><a href="#一、this指向" class="headerlink" title="一、this指向"></a>一、this指向</h3><ol>
 <li><p><strong>普通函数调用</strong>  this是全局对象window   这个函数实质是window下的方法</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">520</span>
 <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -352,17 +350,15 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 </code></pre>
 </li>
 <li><p><strong>函数作为对象的方法被调用</strong>  函数的this就是调用它的对象</p>
-<p> <code>`</code>javascript<br>function test(){</p>
-<pre><code>        console.log(this.x)
-    }
-    var obj = {}
-    obj.x = 1
-    obj.m = test
-    obj.m() // 1
-</code></pre></li>
-</ol>
-<pre><code>```
-</code></pre><ol start="3">
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        obj<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span>
+        obj<span class="token punctuation">.</span>m <span class="token operator">=</span> test
+        obj<span class="token punctuation">.</span><span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span>
+</code></pre>
+</li>
 <li><p><strong>构造函数</strong>  构造函数中this是实例化的对象</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
            <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">520</span>
@@ -429,8 +425,7 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 <hr>
 </li>
 </ol>
-<p>二、改变this指向的方法</p>
-<ul>
+<h3 id="二、改变this指向的方法"><a href="#二、改变this指向的方法" class="headerlink" title="二、改变this指向的方法"></a>二、改变this指向的方法</h3><ul>
 <li><p>call、apply、bind都属于Function.prototype的一个方法，所以每个function实例都有call、apply、bind属性</p>
 <pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
          b<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -652,8 +647,7 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 第一次写博客，谈一下现在对this的理解。
 如果有不对的地方，欢迎大家指正。
 一、this指向
-
-普通函数调用 </div>
+普通函数调用  </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-20
@@ -704,8 +698,7 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 第一次写博客，谈一下现在对this的理解。
 如果有不对的地方，欢迎大家指正。
 一、this指向
-
-普通函数调用 </div>
+普通函数调用  </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-20
