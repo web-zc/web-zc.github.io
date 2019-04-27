@@ -438,20 +438,21 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
 <hr>
 <h3 id="二、改变this指向的方法"><a href="#二、改变this指向的方法" class="headerlink" title="二、改变this指向的方法"></a>二、改变this指向的方法</h3><ul>
 <li>call、apply、bind都属于Function.prototype的一个方法，所以每个function实例都有call、apply、bind属性</li>
-<li><p>函数调用bind()后返回一个新的函数（称为绑定函数），与被调用函数有相同的函数体，只是this改变了</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-         b<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">{</span>
-             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
-             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>
-         <span class="token punctuation">}</span>
-     <span class="token punctuation">}</span>
-     <span class="token comment" spellcheck="true">//以下所有调用都可以传递参数</span>
-     obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//obj</span>
-     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window call与apply 都会返回新函数</span>
-     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window</span>
-     obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window bind返回改变了上下文后的一个函数，要执行的话还要调用</span>
+<li>函数调用bind()后返回一个新的函数（称为绑定函数），与被调用函数有相同的函数体，只是this改变了</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">   <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+           b<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+               console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+               console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>
+           <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token comment" spellcheck="true">//以下所有调用都可以传递参数</span>
+       obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//obj</span>
+       obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window call与apply 都会返回新函数</span>
+       obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window</span>
+       obj<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// window bind返回改变了上下文后的一个函数，要执行的话还要调用</span>
 </code></pre>
-</li>
+<ul>
 <li><p>用变量或对象下的方法接收，会改变this指向</p>
 <pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1314</span>
         <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -470,7 +471,31 @@ this指向一直令人头疼，每当自己快弄懂得时候，又来些奇怪�
         c<span class="token punctuation">.</span><span class="token function">o</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 666</span>
 </code></pre>
 </li>
+<li>一个函数调用bind返回的新函数, 调用bind不会改变this指向了<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> o <span class="token operator">=</span>  z<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+o<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// this是obj</span>
+</code></pre>
+</li>
+<li>箭头函数的this无法通过 call、apply、bind改变<pre class=" language-javascript"><code class="language-javascript">  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">123</span> 
+       <span class="token keyword">var</span> obj <span class="token operator">=</span><span class="token punctuation">{</span>
+           a<span class="token punctuation">:</span><span class="token number">520</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">var</span> z <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+           console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+       <span class="token punctuation">}</span>
+       z<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 123</span>
+</code></pre>
+<h3 id="三、其他"><a href="#三、其他" class="headerlink" title="三、其他"></a>三、其他</h3>   this 是 JS 中的动态作用域机制, 具体来说有四种, 优先级有低到高分别如下:</li>
 </ul>
+<ol>
+<li><p>默认的 this 绑定, 就是说 在一个函数中使用了 this, 但是没有为 this 绑定对象. 这种情况下, 非严格默认, this 就是全局变量 Node 环境中的 global, 浏览器环境中的 window.</p>
+</li>
+<li><p>隐式绑定: 使用 obj.foo() 这样的语法来调用函数的时候, 函数 foo 中的 this 绑定到 obj 对象.</p>
+</li>
+<li><p>显示绑定: foo.call(obj, …), foo.apply(obj,[…]), foo.bind(obj,…)</p>
+</li>
+<li><p>构造绑定: new foo() , 这种情况, 无论 foo 是否做了绑定, 都要创建一个新的对象, 然后 foo 中的 this 引用这个对象.<br>严格模式下，默认的this就是undefined了</p>
+</li>
+</ol>
 
             </div>
             <hr>
